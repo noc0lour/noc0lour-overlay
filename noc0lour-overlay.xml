@@ -1,11 +1,12 @@
-<?xml version="1.0" ?>                                                                                                     
-<repositories version="1.0">
-        <repo priority="50" quality="experimental" status="unofficial">
-                <name>noc0lour-overlay</name>
-                <description>noc0lours personal overlay</description>
-                <owner>
-                        <email>mail@noc0lour.de</email>
-                </owner>
-                <source type="git">https://github.com/noc0lour/noc0lour-overlay.git</source>
-        </repo>
+<repositories encoding="unicode" version="1.1">
+  <repo priority="50" quality="experimental">
+    <name>noc0lour-overlay</name>
+    <description>noc0lour's personal overlay</description>
+    <homepage>https://github.com/noc0lour/noc0lour-overlay</homepage>
+    <owner>
+      <email>mail@andrejro.de</email>
+      <name>Andrej Rode</name>
+    </owner>
+    <source type="git">https://github.com/noc0lour/noc0lour-overlay.git</source>
+  </repo>
 </repositories>
