@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
 EAPI=5
 
@@ -14,7 +13,6 @@ SRC_URI="
 	http://erdmann.es/dywi/dl/tlp/tlp-gentoo-patches-${PV}.tar.xz
 "
 S="${WORKDIR}/${PN^^}-${PV}"
-KEYWORDS="~amd64 ~x86"
 
 MY_README_URI="https://github.com/dywisor/tlp-portage/blob/maint/README.rst"
 MY_CONFFILE="/etc/tlp.conf"
@@ -25,7 +23,7 @@ RESTRICT="mirror"
 LICENSE="GPL-2+ tpacpi-bundled? ( GPL-3+ )"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE="tlp_suggests rdw laptop-mode-tools +tpacpi-bundled +pm-utils deprecated"
+IUSE="tlp_suggests rdw laptop-mode-tools +tpacpi-bundled systemd deprecated"
 
 _OPTIONAL_RDEPEND="
 	sys-apps/smartmontools
@@ -38,8 +36,8 @@ RDEPEND="
 	sys-apps/util-linux
 	sys-apps/hdparm
 	dev-lang/perl sys-apps/usbutils sys-apps/pciutils
-	pm-utils?  ( sys-power/pm-utils )
-	!pm-utils? ( sys-apps/systemd )
+	systemd? ( sys-apps/systemd )
+	!systemd? ( sys-power/pm-utils )
 	|| ( net-wireless/iw net-wireless/wireless-tools )
 	net-wireless/rfkill
 
@@ -84,7 +82,7 @@ src_install() {
 		TLP_CONF="${MY_CONFFILE}" \
 		TLP_NO_INIT=1 TLP_NO_BASHCOMP=1 TLP_WITH_SYSTEMD=1 \
 		$(usex tpacpi-bundled TLP_NO_TPACPI={0,1}) \
-		$(usex pm-utils TLP_NO_PMUTILS={0,1}) \
+		$(usex systemd TLP_NO_PMUTILS={1,0}) \
 		install-tlp $(usex rdw install-rdw "")
 
 	## init/service file(s)

@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
 EAPI=5
 
@@ -25,7 +24,7 @@ RESTRICT="mirror"
 LICENSE="GPL-2+ tpacpi-bundled? ( GPL-3+ )"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE="tlp_suggests rdw laptop-mode-tools +tpacpi-bundled +pm-utils bluetooth deprecated"
+IUSE="tlp_suggests rdw laptop-mode-tools +tpacpi-bundled systemd bluetooth deprecated"
 
 _OPTIONAL_RDEPEND="
 	sys-apps/smartmontools
@@ -38,8 +37,8 @@ RDEPEND="
 	sys-apps/util-linux
 	sys-apps/hdparm
 	dev-lang/perl sys-apps/usbutils sys-apps/pciutils
-	pm-utils?  ( sys-power/pm-utils )
-	!pm-utils? ( sys-apps/systemd )
+	systemd?  ( sys-apps/systemd )
+	!systemd? ( sys-power/pm-utils )
 	net-wireless/rfkill
 	|| ( net-wireless/iw net-wireless/wireless-tools )
 	|| ( sys-power/linux-x86-power-tools sys-apps/linux-misc-apps )
@@ -119,7 +118,7 @@ src_install() {
 	doman man/?*.?*
 	## repoman false positive: COPYING
 	##  specifies which files are covered by which license
-	dodoc README AUTHORS COPYING changelog
+	dodoc README AUTHORS  changelog
 
 	## pm hook blacklist
 	# always install this file,

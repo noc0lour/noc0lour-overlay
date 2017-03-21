@@ -32,10 +32,9 @@
 			Installs thinkpad-radiosw, which relies on deprecated kernel features
 			(CONFIG_ACPI_PROC_EVENT, removed in 3.12 and later).
 		</flag>
-		<flag name='pm-utils'>
-			Rely on <pkg>sys-power/pm-utils</pkg> for handling system
-			suspend/hibernate/resume. Only users of <pkg>sys-apps/systemd</pkg>
-			may disable this flag.
+		<flag name='systemd'>
+			Use systemd built-in to handle suspend/hibernate/resume. If not set 
+			rely on <pkg>sys-power/pm-utils</pkg>.
 		</flag>
 		<flag name='tlp_suggests'>Pull in all optional dependencies</flag>
 		<flag name='rdw'>Radio device wizard: switch radios upon network connect/disconnect and dock/undock</flag>

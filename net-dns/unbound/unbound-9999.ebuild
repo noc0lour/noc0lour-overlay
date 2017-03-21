@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
 EAPI=5
 PYTHON_COMPAT=( python{2_7,3_3} )
@@ -21,7 +20,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="dev-libs/expat
 	dev-libs/libevent
-	>=dev-libs/openssl-0.9.8
+	>=dev-libs/openssl-0.9.8:*
 	>=net-libs/ldns-1.6.13[ecdsa,ssl,gost?]
 	selinux? ( sec-policy/selinux-bind )"
 

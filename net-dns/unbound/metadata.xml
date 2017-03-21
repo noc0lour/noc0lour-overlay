@@ -4,4 +4,7 @@
 	<maintainer type="person">
 		<email>mail@andrejro.de</email>
 	</maintainer>
+	<use>
+		<flag name="gost">Thingy</flag>
+	</use>
 </pkgmetadata>

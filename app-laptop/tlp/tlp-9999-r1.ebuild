@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -45,7 +44,7 @@ MY_CONFFILE="/etc/tlp.conf"
 LICENSE="GPL-2+ tpacpi-bundled? ( GPL-3+ )"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE="tlp_suggests rdw laptop-mode-tools +tpacpi-bundled +pm-utils bluetooth"
+IUSE="tlp_suggests rdw laptop-mode-tools +tpacpi-bundled systemd bluetooth"
 
 _OPTIONAL_RDEPEND="
 	sys-apps/smartmontools
@@ -58,8 +57,8 @@ RDEPEND="
 	sys-apps/util-linux
 	sys-apps/hdparm
 	dev-lang/perl sys-apps/usbutils sys-apps/pciutils
-	pm-utils?  ( sys-power/pm-utils )
-	!pm-utils? ( sys-apps/systemd )
+	systemd?  ( sys-apps/systemd )
+	!systemd? ( sys-power/pm-utils )
 	net-wireless/rfkill
 	|| ( net-wireless/iw net-wireless/wireless-tools )
 	|| ( sys-power/linux-x86-power-tools sys-apps/linux-misc-apps )
@@ -154,15 +153,13 @@ src_install() {
 		TLP_NO_INIT=1 \
 		TLP_WITH_SYSTEMD=1 \
 		$(usex tpacpi-bundled TLP_NO_TPACPI={0,1}) \
-		$(usex pm-utils TLP_NO_PMUTILS={0,1}) \
+		$(usex systemd TLP_NO_PMUTILS={1,0}) \
 		install-tlp install-man $(usex rdw install-rdw "")
 
 	## init/service file(s)
 	newinitd tlp.openrc "${PN}"
 
-	## repoman false positive: COPYING
-	##  specifies which files are covered by which license
-	dodoc README AUTHORS COPYING changelog
+	dodoc README AUTHORS changelog
 
 	## pm hook blacklist
 	# always install this file,
