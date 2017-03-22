@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
@@ -26,14 +25,11 @@ RDEPEND="virtual/libusb:1
 	sys-libs/ncurses:0
 	"
 DEPEND="${RDEPEND}
-	dev-python/cheetah
+	dev-python/mako
 	app-arch/unzip"
 
 src_prepare() {
 	gnome2_environment_reset #534582
-
-	#this may not be needed in 3.4.3 and above, please verify
-	sed -i 's#SET(PKG_LIB_DIR ${PKG_DATA_DIR})#SET(PKG_LIB_DIR ${LIBRARY_DIR}/uhd)#g' CMakeLists.txt || die
 }
 
 src_install() {
