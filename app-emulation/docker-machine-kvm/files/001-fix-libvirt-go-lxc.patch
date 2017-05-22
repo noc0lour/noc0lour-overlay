@@ -1,0 +1,20 @@
+diff -ruN /var/tmp/portage/app-emulation/docker-machine-kvm-0.10.0/work/docker-machine-kvm-0.10.0/src/github.com/libvirt/libvirt-go/lxc.go ./lxc.go
+--- a/src/github.com/libvirt/libvirt-go/lxc.go	2017-05-08 18:18:50.000000000 +0200
++++ b/src/github.com/libvirt/libvirt-go/lxc.go	2017-05-23 00:34:07.683089440 +0200
+@@ -60,7 +60,7 @@
+ 		cfd = *(*C.int)(unsafe.Pointer(uintptr(unsafe.Pointer(cfdlist)) + (unsafe.Sizeof(cfd) * uintptr(i))))
+ 		fdlist[i] = *os.NewFile(uintptr(cfd), "namespace")
+ 	}
+-	defer C.free(cfdlist)
++	defer C.free(unsafe.Pointer(cfdlist))
+ 	return fdlist, nil
+ }
+ 
+@@ -82,7 +82,7 @@
+ 		cfd = *(*C.int)(unsafe.Pointer(uintptr(unsafe.Pointer(coldfdlist)) + (unsafe.Sizeof(cfd) * uintptr(i))))
+ 		oldfdlist[i] = *os.NewFile(uintptr(cfd), "namespace")
+ 	}
+-	defer C.free(coldfdlist)
++	defer C.free(unsafe.Pointer(coldfdlist))
+ 	return oldfdlist, nil
+ }
