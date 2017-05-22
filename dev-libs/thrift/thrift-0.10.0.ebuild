@@ -12,7 +12,9 @@ SRC_URI="mirror://apache/${PN}/${PV}/${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+pic +cpp +c_glib csharp java erlang python perl php php_extension ruby haskell go"
+IUSE="+pic +cpp +c_glib +qt4 csharp java erlang python perl php php_extension ruby haskell go qt5"
+
+REQUIRED_USE="|| ( qt4 qt5 )"
 
 #FIXME: java.eclassesnotused          1
 RDEPEND=">=dev-libs/boost-1.40.0

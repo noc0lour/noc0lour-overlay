@@ -31,5 +31,9 @@
 	</flag>
 	<flag name='go'>Enable go support.
 	</flag>
+	<flag name='qt5'>Enable qt5 support.
+	</flag>
+	<flag name='qt4'>Enable qt4 support.
+	</flag>
 	</use>
 </pkgmetadata>
