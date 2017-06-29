@@ -21,6 +21,10 @@ RDEPEND="dev-lang/perl
 
 S="${WORKDIR}"
 
+src_unpack() {
+    cp "${DISTDIR}/${PN}.pl" "${WORKDIR}" || die
+}
+
 src_install() {
 	dobin geteltorito.pl
 }
