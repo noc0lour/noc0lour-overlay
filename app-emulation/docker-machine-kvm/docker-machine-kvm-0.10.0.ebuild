@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -50,10 +50,10 @@ unpack_go_packages() {
 src_unpack() {
 	mkdir "${S}" && cd "${S}" || die
 	unpack_go_packages
-	epatch "${FILESDIR}/001-fix-libvirt-go-lxc.patch"
 }
 
 src_prepare() {
+	epatch "${FILESDIR}/001-fix-libvirt-go-lxc.patch"
 	eapply_user
 }
 
