@@ -34,8 +34,8 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 		digital? ( filter analog )
 		dtv? ( fec )
 		pager? ( filter analog )
-		qt4? ( filter )
-		qt5? ( filter )
+		qt4? ( filter !qt5 )
+		qt5? ( filter !qt4 )
 		uhd? ( filter analog )
 		fcd? ( || ( alsa oss ) )
 		wavelet? ( analog )
@@ -153,6 +153,9 @@ src_configure() {
 		$(cmake-utils_use_enable vocoder GR_VOCODER) \
 		$(cmake-utils_use_enable wavelet GR_WAVELET) \
 		$(cmake-utils_use_enable qt4 GR_QTGUI) \
+		$(cmake-utils_use_enable qt5 GR_QTGUI) \
+		$(cmake-utils_use_enable qt4 DESIRED_QT_VERSION=4) \
+		$(cmake-utils_use_enable qt5 DESIRED_QT_VERSION=5) \
 		$(cmake-utils_use_enable sdl GR_VIDEO_SDL) \
 		$(cmake-utils_use_enable zeromq GR_ZEROMQ) \
 		-DENABLE_GR_CORE=ON \
