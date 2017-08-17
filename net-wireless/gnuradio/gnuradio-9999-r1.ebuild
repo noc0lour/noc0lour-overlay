@@ -95,7 +95,7 @@ DEPEND="${RDEPEND}
 	app-text/docbook-xml-dtd:4.2
 	>=dev-lang/swig-3.0.5
 	dev-python/mako[${PYTHON_USEDEP}]
-	dev-util/cmake
+	>=dev-util/cmake-3.8.2
 	virtual/pkgconfig
 	doc? (
 		>=app-doc/doxygen-1.5.7.1
