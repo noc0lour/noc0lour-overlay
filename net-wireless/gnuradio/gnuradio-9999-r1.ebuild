@@ -13,8 +13,8 @@ LICENSE="GPL-3"
 SLOT="0/${PV}"
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI=( https://github.com/gnuradio/gnuradio.git http://gnuradio.org/git/gnuradio.git )
-	EGIT_BRANCH="next"
+	EGIT_REPO_URI=( https://github.com/noc0lour/gnuradio.git )
+	EGIT_BRANCH="next-volk-update"
 	inherit git-r3
 	KEYWORDS=""
 else
