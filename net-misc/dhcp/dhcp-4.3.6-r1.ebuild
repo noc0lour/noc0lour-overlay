@@ -156,6 +156,7 @@ src_configure() {
 	local myeconfargs=(
 		--enable-paranoia
 		--enable-early-chroot
+		--with-randomdev=/dev/random
 		--sysconfdir=${e}
 		$(use_enable ipv6 dhcpv6)
 		$(use_with ldap)
