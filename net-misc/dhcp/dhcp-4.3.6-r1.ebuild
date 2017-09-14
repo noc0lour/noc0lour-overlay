@@ -156,7 +156,6 @@ src_configure() {
 	local myeconfargs=(
 		--enable-paranoia
 		--enable-early-chroot
-		--with-randomdev=/dev/random
 		--sysconfdir=${e}
 		$(use_enable ipv6 dhcpv6)
 		$(use_with ldap)
@@ -170,7 +169,8 @@ src_configure() {
 	eval econf \
 		$(sed -n '/^bindconfig =/,/^$/{:a;N;$!ba;s,^[^-]*,,;s,\\\s*\n\s*--,--,g;s, @[[:upper:]]\+@,,g;P;D}' ../Makefile.in) \
 		--disable-symtable \
-		--without-make-clean
+		--without-make-clean \
+		--with-randomdev=/dev/random
 }
 
 src_compile() {
