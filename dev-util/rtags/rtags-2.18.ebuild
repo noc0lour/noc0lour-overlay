@@ -22,6 +22,10 @@ DEPEND="sys-devel/clang:=
 	sys-libs/ncurses:0"
 RDEPEND="${DEPEND}"
 
+src_prepare() {
+	epatch "${FILESDIR}/0001-add-option-to-disable-bash-completion.patch"
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DDISABLE_BASH_COMPLETION="$(usex bash_completion OFF ON)"
