@@ -24,6 +24,7 @@ RDEPEND="${DEPEND}"
 
 src_prepare() {
 	epatch "${FILESDIR}/0001-add-option-to-disable-bash-completion.patch"
+	default_src_prepare
 }
 
 src_configure() {
