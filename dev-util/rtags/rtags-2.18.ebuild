@@ -24,7 +24,7 @@ RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
-		-DDISABLE_BASH_COMPLETION="$(usex bash_completion)"
+		-DDISABLE_BASH_COMPLETION="$(usex bash_completion OFF ON)"
 	)
 
 		cmake-utils_src_configure
