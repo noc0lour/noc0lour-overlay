@@ -4,4 +4,9 @@
 	<maintainer type="person">
 		<email>mail@andrejro.de</email>
 	</maintainer>
+	<use lang="en">
+			<flag name="bash_completion">
+					Enable bash_completion if it is available on the system
+			</flag>
+	</use>
 </pkgmetadata>
