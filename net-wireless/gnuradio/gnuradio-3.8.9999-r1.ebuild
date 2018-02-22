@@ -50,7 +50,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 # boost-1.52.0 is blacklisted, bug #461578, upstream #513, boost #7669
 RDEPEND="${PYTHON_DEPS}
 	>=dev-lang/orc-0.4.12
-	dev-libs/boost:0=[${PYTHON_USEDEP}]
+	dev-libs/boost:0
 	!<=dev-libs/boost-1.52.0-r6:0/1.52
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
@@ -80,7 +80,7 @@ RDEPEND="${PYTHON_DEPS}
 		x11-libs/qwt:6[qt5(+)]
 	)
 	sdl? ( >=media-libs/libsdl-1.2.0 )
-	uhd? ( >=net-wireless/uhd-3.9.6:=[${PYTHON_USEDEP}] )
+	uhd? ( >=net-wireless/uhd-3.9.6 )
 	utils? ( dev-python/matplotlib[${PYTHON_USEDEP}] )
 	vocoder? ( media-sound/gsm )
 	wavelet? (
