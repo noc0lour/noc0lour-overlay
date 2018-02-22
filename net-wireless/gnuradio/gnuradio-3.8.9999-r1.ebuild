@@ -74,7 +74,6 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	qt5? (
 		dev-python/PyQt5[opengl,${PYTHON_USEDEP}]
-		>=dev-python/pyqwt-5.2:5[${PYTHON_USEDEP}]
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		x11-libs/qwt:6[qt5(+)]
