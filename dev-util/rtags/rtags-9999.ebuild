@@ -11,7 +11,9 @@ HOMEPAGE="http://www.rtags.net/"
 # project, so use the git version and the git-r3 eclass instead
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/Andersbakken/rtags.git"
-EGIT_COMMIT="v${PV}"
+if ! [[ "${PV}" == 9999* ]]; then
+	EGIT_COMMIT="v${PV}"
+fi
 
 LICENSE="GPL-3+"
 SLOT="0"
