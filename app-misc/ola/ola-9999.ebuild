@@ -36,9 +36,9 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 if [[ ${PV} == 9999* ]]; then
 	# Rerun autotools
+	eapply_user
 	einfo "Generating autotools files..."
-	eautoconf
-	eautomake
+	eautoreconf
 fi
 }
 
