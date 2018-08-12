@@ -10,7 +10,7 @@ inherit flag-o-matic eutils python-single-r1
 DESCRIPTION="Open Lighting Architecture"
 HOMEPAGE="http://www.openlighting.org/"
 if [[ ${PV} == 9999* ]]; then
-	inherit git-r3
+	inherit git-r3 autotools
 	SRC_URI=""
 	EGIT_REPO_URI="https://github.com/OpenLightingProject/${PN}.git"
 	KEYWORDS=""
@@ -32,6 +32,15 @@ DEPEND="
 	dev-util/cppunit
 	httpd? ( net-libs/libmicrohttpd[messages] )"
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+if [[ ${PV} == 9999* ]]; then
+	# Rerun autotools
+	einfo "Generating autotools files..."
+	eautoconf
+	eautomake
+fi
+}
 
 src_configure() {
 	econf	--prefix=/usr \
