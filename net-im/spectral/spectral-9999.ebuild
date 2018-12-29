@@ -29,7 +29,12 @@ DEPEND="dev-libs/libQMatrixClient
 	dev-qt/qtmultimedia:5
 "
 RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_configure(){
-	eqmake5 PREFIX="${D}/usr"
+	eqmake5 PREFIX="${D}/usr" USE_SYSTEM_QMATRIXCLIENT="true" USE_SYSTEM_SORTFILTERPROXYMODEL="true" INSTALL_ROOT=.
+}
+
+src_install(){
+	emake install INSTALL_ROOT="${D}"
 }
