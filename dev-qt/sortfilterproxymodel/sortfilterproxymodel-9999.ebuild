@@ -27,5 +27,5 @@ DEPEND="dev-qt/qtcore:5
 RDEPEND="${DEPEND}"
 
 src_configure() {
-	eqmake5
+	eqmake5 PREFIX="${D}"
 }
