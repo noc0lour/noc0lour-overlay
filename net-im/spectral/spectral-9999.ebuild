@@ -32,7 +32,7 @@ RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 src_configure(){
-	eqmake5 PREFIX="${D}/usr" USE_SYSTEM_QMATRIXCLIENT="true" USE_SYSTEM_SORTFILTERPROXYMODEL="true" INSTALL_ROOT=.
+	eqmake5 PREFIX="/usr" USE_SYSTEM_QMATRIXCLIENT="true" USE_SYSTEM_SORTFILTERPROXYMODEL="true" INSTALL_ROOT=.
 }
 
 src_install(){
