@@ -27,5 +27,9 @@ DEPEND="dev-qt/qtcore:5
 RDEPEND="${DEPEND}"
 
 src_configure() {
-	eqmake5 PREFIX="${D}/usr"
+	eqmake5 PREFIX="/usr" INSTALL_ROOT=.
+}
+
+src_install() {
+	emake install INSTALL_ROOT="${D}"
 }
