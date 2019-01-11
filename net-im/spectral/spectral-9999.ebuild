@@ -24,7 +24,7 @@ DEPEND="dev-libs/libQMatrixClient
 	dev-qt/sortfilterproxymodel
 	dev-qt/qtcore:5
 	dev-qt/qtdeclarative:5
-	dev-qt/qtquickcontrols:5
+	dev-qt/qtquickcontrols2:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtmultimedia:5
 "
