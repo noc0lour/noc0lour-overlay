@@ -5,7 +5,6 @@
 		<email>mail@andrejro.de</email>
 	</maintainer>
 	<use>
-			<flag name="man"> generate manual </flag>
-			<flag name="info"> generate info </flag>
+			<flag name="test"> Enable tests </flag>
 	</use>
 </pkgmetadata>

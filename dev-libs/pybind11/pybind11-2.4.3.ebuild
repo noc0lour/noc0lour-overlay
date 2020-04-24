@@ -5,11 +5,11 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit cmake-utils python-single-r1
 
 DESCRIPTION="Lightweight library that exposes C++ types in Python and vice versa"
 HOMEPAGE="https://github.com/wjakob/pybind11"
-SRC_URI="https://github.com/pybind/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/pybind/${PN}/archive/v${PV}.tar.gz -> ${P}_cmake.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -17,32 +17,17 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc man info"
 
 RDEPEND="info? ( sys-apps/texinfo )"
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? (
-		dev-python/sphinx[${PYTHON_USEDEP}]
-		dev-python/breathe[${PYTHON_USEDEP}]
+DEPEND="test? (
+			  dev-cpp/eigen
+			  dev-cpp/catch
+			  )"
+
+src_configure(){
+	python_export PYTHON_SITEDIR
+	mycmakeargs=(
+		-DPYTHON_EXECUTABLE="${PYTHON}"
+		-DGR_PYTHON_DIR="${PYTHON_SITEDIR}"
+		-DPYBIND11_TEST="$(usex test)"
 	)
-	man? (
-		dev-python/sphinx[${PYTHON_USEDEP}]
-		dev-python/breathe[${PYTHON_USEDEP}]
-	)
-	info? (
-		dev-python/sphinx[${PYTHON_USEDEP}]
-		dev-python/breathe[${PYTHON_USEDEP}]
-	)"
-
-python_compile_all() {
-	if use doc || use man || use info; then
-		cd docs || die
-		emake $(use doc && echo html) $(use man && echo man) $(use info && echo info)
-	fi
-}
-
-python_install_all() {
-	distutils-r1_python_install_all
-
-	dodoc README.md
-	use doc && dodoc -r docs/.build/html
-	use man && doman docs/.build/man/pybind11.1
-	use info && doinfo docs/.build/texinfo/pybind11.info
+	cmake-utils_src_configure
 }
