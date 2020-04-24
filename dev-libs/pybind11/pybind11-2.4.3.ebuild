@@ -14,7 +14,7 @@ SRC_URI="https://github.com/pybind/${PN}/archive/v${PV}.tar.gz -> ${P}_cmake.tar
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc man info"
+IUSE="test"
 
 RDEPEND="info? ( sys-apps/texinfo )"
 DEPEND="test? (
